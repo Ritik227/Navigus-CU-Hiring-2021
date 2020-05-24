@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+	
+	<div class="container">
+		<div>
+			<ol class="breadcrumb">
+				<li><a th:href="@{/eventList}"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Go back</a></li>
+			</ol>
+			
+		</div>
+			<div class="col-xs-9" >
+				<h3>Event Details</h3>
+				<div class="row">
+					<div class="col-xs-6" >
+						<p><strong>Event Name: </strong><span th:text="${userSchedule.eventName}"></span></p>
+						<p><strong>Event Date: </strong><span th:text="${userSchedule.eventDate}"></span></p>
+						<p><strong>Event Start: </strong><span th:text="${userSchedule.eventStart}"></span></p>
+						<p><strong>Event End: </strong><span th:text="${userSchedule.eventEnd}"></span></p>
+					</div>
+				</div>
+				
+				<p><Strong>Description: </Strong><span th:utext="${userSchedule.description}"></span></p>
+			</div>
+			
+		</div>
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

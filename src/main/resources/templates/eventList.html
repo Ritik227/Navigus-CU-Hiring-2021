@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div class="table-responsive">
+			<table id="eventListTable"
+				class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Event Name</th>
+						<th>Event Date</th>
+						<th>Event Start</th>
+						<th>Event End</th>
+						<th>Operations</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="userSchedule:${eventList}">
+						<td><a
+							th:href="@{/userInfo(id=${userSchedule.id})}"><span
+								th:text="${userSchedule.eventName}"></span></a></td>
+						<td th:text="${userSchedule.eventDate}"></td>
+						<td th:text="${userSchedule.eventStart}"></td>
+						<td th:text="${userSchedule.eventEnd}"></td>
+						<td><input hidden="hidden" name="id"
+							th:value="${userSchedule.id}" /><a
+							th:href="@{/removeUserSchedule(id=${userSchedule.id})}"><i
+								class="fa fa-times"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+							th:href="@{/updateEvent(id=${userSchedule.id})}"><i
+								class="fa fa-pencil"></i></a></td>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+
+	<script>
+		$(document).ready(
+				function() {
+					$('#eventListTable').dataTable(
+							{
+								"lengthMenu" : [ [ 5, 10, 15, 20, -1 ],
+										[ 5, 10, 15, 20, "All" ] ],
+								"ordering" : false,
+								stateSave : true
+							});
+				});
+	</script>
+</body>
+</html>

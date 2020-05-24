@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal" th:action="@{/addNewSchedule}"
+				method="post">
+				<input hidden="hidden" name="id" th:value="${userSchedule.id}" />
+				<fieldset>
+					<legend class="center-block">
+						New Event Information<span style="font-size: small"> * is a
+							required field</span>
+					</legend>
+
+
+					<!-- title -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="title">* Event
+							Name</label>
+
+						<div class="col-md-8">
+							<input type="text" name="eventName" class="form-control"
+								id="eventName" required="required" placeholder="Event Name"/>
+							<span class="help-block">Name of the Event</span>
+						</div>
+					</div>
+
+					<!-- publication date -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="publicationDate">Event
+							Date</label>
+						<div class="col-md-8">
+							<input type="date" class="form-control" id="eventDate"
+								name="eventDate" placeholder="Event Date" /> <span
+								class="help-block">Event Date of the Meeting/Schedule</span>
+						</div>
+					</div>
+
+					<!-- list price -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="eventStart">Event
+							Start</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">$</span> <input type="number"
+									name="eventStart" step="0.5" class="form-control"
+									id="eventStart" placeholder="Event Start" />
+							</div>
+							<span class="help-block">Starting time of the event</span>
+						</div>
+					</div>
+
+					<!-- our price -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="eventEnd">Event
+							End</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">$</span> <input type="number"
+									name="eventEnd" step="0.5" class="form-control" id="eventEnd"
+									placeholder="Event End" />
+							</div>
+							<span class="help-block">Ending time of the event</span>
+						</div>
+					</div>
+
+					<!-- description -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="description">Description</label>
+						<div class="col-md-8">
+							<textarea name="description" rows="5" cols="50"
+								class="form-control" id="description" placeholder="Description" /></textarea>
+							<span class="help-block">Description of the event</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-success">Add Event</button>
+							<a class="btn btn-danger" th:href="@{/}">Cancel</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>
